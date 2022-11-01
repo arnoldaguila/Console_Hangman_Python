@@ -19,6 +19,7 @@ def console_game(word):
     number_of_guesses = 6 # six parts of the body. Head, body, left arm, right arm, left leg, right leg.
     blank_lines = "_" * len(word) # creating blank lines for user experience.
     blank_lines_list = list(blank_lines)
+    loss = False
     while number_of_guesses != 0:
         user_input = input("Enter a letter: ") # userInput
         if len(user_input) > 1:
@@ -27,8 +28,12 @@ def console_game(word):
             # if letter is not in the word
             if((user_input in word) == False):
                 number_of_guesses = number_of_guesses - 1
-                print("".join(blank_lines_list))
-                print("Guesses Remaining: {} \n".format(number_of_guesses))
+                if number_of_guesses == 0:
+                    loss = True
+                    break
+                else:
+                    print("".join(blank_lines_list))
+                    print("Guesses Remaining: {} \n".format(number_of_guesses))
             else:
                 for letter in user_input:
                     for i in range(len(word)):
@@ -37,10 +42,13 @@ def console_game(word):
                 print("".join(blank_lines_list))
                 print("Guesses Remaining: {} \n".format(number_of_guesses))
 
+    if loss:
+        print("You lost.")
+        print("The word was {}".format(word))
 
 
 
-
+# main method
 if __name__ == '__main__':
     word = get_word("word_bank.txt") # getting word
     print(word)
