@@ -20,14 +20,22 @@ def console_game(word):
     blank_lines = "_" * len(word) # creating blank lines for user experience.
     blank_lines_list = list(blank_lines)
     while number_of_guesses != 0:
-        guesses = []
-        user_input = input("Enter a letter: ")
-        guesses.append(user_input)
-        for i in guesses:
-            for j in range(len(word)):
-                if word[j] == i:
-                    blank_lines[j] = i
-            return blank_lines
+        user_input = input("Enter a letter: ") # userInput
+        if len(user_input) > 1:
+            print("Invalid input, please input 1 letter.")
+        else:
+            # if letter is not in the word
+            if((user_input in word) == False):
+                number_of_guesses = number_of_guesses - 1
+                print("".join(blank_lines_list))
+                print("Guesses Remaining: {} \n".format(number_of_guesses))
+            else:
+                for letter in user_input:
+                    for i in range(len(word)):
+                        if word[i] == letter:
+                            blank_lines_list[i] = letter
+                print("".join(blank_lines_list))
+                print("Guesses Remaining: {} \n".format(number_of_guesses))
 
 
 
