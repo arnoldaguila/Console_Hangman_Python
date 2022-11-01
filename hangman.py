@@ -16,9 +16,13 @@ def console_game(word):
     :param word: String, a word that was pulled form get_word.
     :return:
     '''
-    number_of_guesses = 6 # six parts of the body. Head, body, left arm, right arm, left leg, right leg.
-    blank_lines = "_" * len(word) # creating blank lines for user experience.
+
+    # six parts of the body. Head, body, left arm, right arm, left leg, right leg.
+    number_of_guesses = 6
+    # creating blank lines for user experience.
+    blank_lines = "_" * len(word)
     blank_lines_list = list(blank_lines)
+    # creating
     loss = False
     while number_of_guesses != 0:
         user_input = input("Enter a letter: ") # userInput
@@ -51,5 +55,4 @@ def console_game(word):
 # main method
 if __name__ == '__main__':
     word = get_word("word_bank.txt") # getting word
-    print(word)
     print(console_game(word)) # playing console hangman
