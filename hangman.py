@@ -22,7 +22,8 @@ def console_game(word):
     # creating blank lines for user experience.
     blank_lines = "_" * len(word)
     blank_lines_list = list(blank_lines)
-    # creating
+    # creating a win/loss message
+    win = False
     loss = False
     while number_of_guesses != 0:
         user_input = input("Enter a letter: ") # userInput
@@ -43,16 +44,25 @@ def console_game(word):
                     for i in range(len(word)):
                         if word[i] == letter:
                             blank_lines_list[i] = letter
-                print("".join(blank_lines_list))
-                print("Guesses Remaining: {} \n".format(number_of_guesses))
+                if ("".join(blank_lines_list) == word):
+                    win = True
+                    print("".join(blank_lines_list))
+                    break
+                else:
+                    print("".join(blank_lines_list))
+                    print("Guesses Remaining: {} \n".format(number_of_guesses))
 
+    #loss message
     if loss:
         print("You lost.")
         print("The word was {}".format(word))
 
+    if win:
+        print("You won!!")
 
 
 # main method
 if __name__ == '__main__':
     word = get_word("word_bank.txt") # getting word
+    print(word)
     print(console_game(word)) # playing console hangman
