@@ -16,7 +16,6 @@ def console_game(word):
     :param word: String, a word that was pulled form get_word.
     :return:
     '''
-
     # six parts of the body. Head, body, left arm, right arm, left leg, right leg.
     number_of_guesses = 6
     # creating blank lines for user experience.
@@ -36,14 +35,14 @@ def console_game(word):
             print("Invalid input, please input 1 letter.")
         else:
             # if letter has been guessed before.
-            if ((user_input in guess_bank) == True):
+            if (user_input in guess_bank):
                 print("You guess the letter before dude!")
                 number_of_guesses = number_of_guesses - 1
                 print("".join(blank_lines_list))
                 print("Guesses Remaining: {} \n".format(number_of_guesses))
             else:
                 # if letter is not in the word
-                if((user_input in word) == False):
+                if(user_input not in word):
                     guess_bank = user_input
                     number_of_guesses = number_of_guesses - 1
                     # checking to see if number_of_guess is 0 for the loss message.
