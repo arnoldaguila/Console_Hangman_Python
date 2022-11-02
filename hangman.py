@@ -29,6 +29,7 @@ def console_game(word):
     loss = False
 
     while number_of_guesses != 0:
+        print("".join(blank_lines_list))
         user_input = input("Enter a letter: ") # userInput
         print()
         if len(user_input) > 1:
@@ -79,5 +80,4 @@ def console_game(word):
 # main function?
 if __name__ == '__main__':
     word = get_word("word_bank.txt") # getting word
-    print(word)
     print(console_game(word)) # playing console hangman
