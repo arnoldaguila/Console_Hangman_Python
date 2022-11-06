@@ -1,8 +1,8 @@
 from random import randint
-
 def get_word(filename):
     '''
     This function gets and returns a random word from a text file that contain a lot of words.
+    Version: October 2022
     :param filename: word_bank.txt is a list of words.
     :return word_file_lines: String, random word from the word_bank.txt file.
     '''
@@ -13,6 +13,7 @@ def get_word(filename):
 def console_game(word):
     '''
     This function is the console game for hangman.
+    Version: November 6, 2022
     :param word: String, a word that was pulled form get_word.
     :return:
     '''
@@ -30,12 +31,15 @@ def console_game(word):
     while number_of_guesses != 0:
         print("".join(blank_lines_list))
         user_input = input("Enter a letter: ") # userInput
+        user_input = user_input.lower()
+
         print()
-        if len(user_input) > 1:
+        if user_input.isdigit() | user_input.isdecimal(): # checking to see if user_input is an int or float.
+            print("Invalid input, please input a letter.")
+        elif len(user_input) > 1: # checking to see if the user_input has put more than 1 letter.
             print("Invalid input, please input 1 letter.")
         else:
-            # if letter has been guessed before.
-            if (user_input in guess_bank):
+            if (user_input in guess_bank): # if letter has been guessed before.
                 print("You guess the letter before dude!")
                 number_of_guesses = number_of_guesses - 1
                 print("".join(blank_lines_list))
@@ -76,7 +80,7 @@ def console_game(word):
         print("You won!!")
 
 
-# main function?
+# script run.
 if __name__ == '__main__':
     word = get_word("word_bank.txt") # getting word
     print(console_game(word)) # playing console hangman
