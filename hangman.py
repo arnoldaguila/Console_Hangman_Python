@@ -2,13 +2,29 @@ from random import randint
 def get_word(filename):
     '''
     This function gets and returns a random word from a text file that contain a lot of words.
-    Version: October 2022
+    Version: November 6, 2022
     :param filename: word_bank.txt is a list of words.
     :return word_file_lines: String, random word from the word_bank.txt file.
     '''
-    with open(filename, "r") as word_file:
-        word_file_lines = word_file.readlines()
-        return word_file_lines[randint(0, len(word_file_lines) - 1)].strip()
+    try: # checking to see if you have a file.
+        with open(filename, "r") as word_file:
+            word_file_lines = word_file.readlines()
+            return word_file_lines[randint(0, len(word_file_lines) - 1)].strip()
+    except FileNotFoundError:
+        print("Please create or download a text file that has a list of words.")
+
+def is_float(user_input):
+    '''
+    is_float()
+    This function checks to see if the user input is a float.
+    :param user_input: String, the param is a string that the user inputted
+    :return: True | False: Boolean, returning true if user input is a float and a false otherwise.
+    '''
+    try:
+        float(user_input)
+        return True
+    except ValueError:
+        return False
 
 def console_game(word):
     '''
@@ -31,10 +47,10 @@ def console_game(word):
     while number_of_guesses != 0:
         print("".join(blank_lines_list))
         user_input = input("Enter a letter: ") # userInput
-        user_input = user_input.lower()
+        user_input = user_input.lower() # if the userInput is a Capital letter.
         print()
-        if user_input.isdigit() | user_input.isdecimal(): # checking to see if user_input is an int or float.
-            print("Invalid input, please input a letter.")
+        if user_input.isdigit() | is_float(user_input): # checking to see if user_input is an int or float.
+            print("Invalid input, can't have integers or decimals as inputs, please input a letter.")
         elif len(user_input) > 1: # checking to see if the user_input has put more than 1 letter.
             print("Invalid input, please input 1 letter.")
         else:
