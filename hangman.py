@@ -32,7 +32,6 @@ def console_game(word):
         print("".join(blank_lines_list))
         user_input = input("Enter a letter: ") # userInput
         user_input = user_input.lower()
-
         print()
         if user_input.isdigit() | user_input.isdecimal(): # checking to see if user_input is an int or float.
             print("Invalid input, please input a letter.")

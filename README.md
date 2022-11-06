@@ -12,3 +12,4 @@ Version November 6, 2022
 
 - Check to see if the user is inputting an int or a float.
 - Trying to figure out how to use tkinter.
+- Found that inputting a decimal gives out the same message as inputting multiple letters.
