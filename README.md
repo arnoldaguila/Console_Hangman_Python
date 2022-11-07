@@ -1,4 +1,4 @@
-# Hangman_console_game
+# Hangman_Console_Game
 My take on a python hangman game (Work in progress)
 
 
