@@ -6,6 +6,7 @@ Version November 1, 2022
 
 - Found a bug with the user not getting a stike to the number_of_guess, if the user inputs the correct letter twice.
 - Fixed the user not getting a strike for inputing the same letter twice.
+- Need to create an actual Hangman now with tkinter.
 
 Version November 6, 2022
 
@@ -15,4 +16,3 @@ Version November 6, 2022
 - Created versions in the doc comments.
 - Implementing a try except in the get_word function.
 - Created an is_float function to check if the user input is a float.
-- Created the print_Hangman function that will print a gallow and a stick figure.
