@@ -93,22 +93,18 @@ def console_game(word):
     :param word: String, a word that was pulled form get_word.
     :return:
     '''
-    # six parts of the body. Head, body, left arm, right arm, left leg, right leg.
-    number_of_guesses = 6
-    # creating blank lines for user experience.
-    blank_lines = "_" * len(word)
+    number_of_guesses = 6 # six parts of the body. Head, body, left arm, right arm, left leg, right leg.
+    blank_lines = "_" * len(word)  # creating blank lines for user experience.
     blank_lines_list = list(blank_lines)
-    # guess bank so that user can't input the same letter twice
-    guess_bank = []
-    # creating a win/loss message
-    win = False
+    guess_bank = [] # guess bank so that user can't input the same letter twice
+    win = False  # creating a win/loss message
     loss = False
 
     while number_of_guesses != 0:
         print_hangman(number_of_guesses)
         print("".join(blank_lines_list))
         user_input = input("Enter a letter: ") # userInput
-        user_input = user_input.lower() # if the userInput is a Capital letter.
+        user_input = user_input.lower() # changing userInput to a lowercase letter.
         print()
         if user_input.isdigit() | is_float(user_input): # checking to see if user_input is an int or float.
             print("Invalid input, can't have integers or decimals as inputs, please input a letter.")
@@ -121,8 +117,7 @@ def console_game(word):
                 print("".join(blank_lines_list))
                 print("Guesses Remaining: {} \n".format(number_of_guesses))
             else:
-                # if letter is not in the word
-                if(user_input not in word):
+                if(user_input not in word): # if letter is not in the word
                     guess_bank = user_input
                     number_of_guesses = number_of_guesses - 1
                     # checking to see if number_of_guess is 0 for the loss message.
@@ -147,18 +142,15 @@ def console_game(word):
                         print("".join(blank_lines_list))
                         print("Guesses Remaining: {} \n".format(number_of_guesses))
 
-    #loss message
-    if loss:
+    if loss:  # loss message
         print_hangman(number_of_guesses)
         print("You lost.")
         print("The word was {}".format(word))
 
-    #win message
-    if win:
+    if win: # win message
         print("You won!!")
 
 
-# script run.
-if __name__ == '__main__':
+if __name__ == '__main__': # script run.
     word = get_word("word_bank.txt") # getting word
     print(console_game(word)) # playing console hangman
