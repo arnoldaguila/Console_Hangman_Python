@@ -1,7 +1,7 @@
 from random import randint
 def get_word(filename):
     '''
-    This function gets and returns a random word from a text file that contain a lot of words.
+    This function gets and returns a random word from a text file that contains a lot of words.
     Version: November 6, 2022
     :param filename: word_bank.txt is a list of words.
     :return word_file_lines: String, random word from the word_bank.txt file.
@@ -26,7 +26,13 @@ def is_float(user_input):
     except ValueError:
         return False
 
-def print_Hangman(number_of_guesses):
+def print_hangman(number_of_guesses):
+    '''
+    print_hangman()
+    This function returns a print statement, shaped as a gallow and stick figure.
+    :param number_of_guesses: Int, the number of guesses the user has left.
+    :return: print of gallow and stick figure.
+    '''
     if number_of_guesses == 6:
         print("_________")
         print("|       |")
@@ -99,7 +105,7 @@ def console_game(word):
     loss = False
 
     while number_of_guesses != 0:
-        print_Hangman(number_of_guesses)
+        print_hangman(number_of_guesses)
         print("".join(blank_lines_list))
         user_input = input("Enter a letter: ") # userInput
         user_input = user_input.lower() # if the userInput is a Capital letter.
@@ -124,7 +130,7 @@ def console_game(word):
                         loss = True
                         break
                     else:
-                        print_Hangman(number_of_guesses)
+                        print_hangman(number_of_guesses)
                         print("".join(blank_lines_list))
                         print("Guesses Remaining: {} \n".format(number_of_guesses))
                 else:
@@ -143,7 +149,7 @@ def console_game(word):
 
     #loss message
     if loss:
-        print_Hangman(number_of_guesses)
+        print_hangman(number_of_guesses)
         print("You lost.")
         print("The word was {}".format(word))
 

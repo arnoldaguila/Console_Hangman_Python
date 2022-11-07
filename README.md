@@ -16,3 +16,4 @@ Version November 6, 2022
 - Created versions in the doc comments.
 - Implementing a try except in the get_word function.
 - Created an is_float function to check if the user input is a float.
+- Found a bug. If user inputs a symbol like ';' or ']' program will accept the input.
