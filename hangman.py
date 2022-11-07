@@ -26,8 +26,62 @@ def is_float(user_input):
     except ValueError:
         return False
 
+def print_Hangman(number_of_guesses):
+    if number_of_guesses == 6:
+        print("_________")
+        print("|       |")
+        print("|")
+        print("|")
+        print("|")
+        print("|")
+        print("|")
+    elif number_of_guesses == 5:
+        print("_________")
+        print("|       |")
+        print("|       O")
+        print("|")
+        print("|")
+        print("|")
+    elif number_of_guesses == 4:
+        print("_________")
+        print("|       |")
+        print("|       O")
+        print("|       |")
+        print("|")
+        print("|")
+    elif number_of_guesses == 3:
+        print("_________")
+        print("|       |")
+        print("|       O")
+        print("|      /|")
+        print("|")
+        print("|")
+    elif number_of_guesses == 2:
+        print("_________")
+        print("|       |")
+        print("|       O")
+        print("|      /|\\")
+        print("|")
+        print("|")
+    elif number_of_guesses == 1:
+        print("_________")
+        print("|       |")
+        print("|       O")
+        print("|      /|\\")
+        print("|        \\")
+        print("|")
+    elif number_of_guesses == 0:
+        print("_________")
+        print("|       |")
+        print("|       O")
+        print("|      /|\\")
+        print("|      / \\")
+        print("|")
+
+
 def console_game(word):
     '''
+    console_game()
     This function is the console game for hangman.
     Version: November 6, 2022
     :param word: String, a word that was pulled form get_word.
@@ -45,6 +99,7 @@ def console_game(word):
     loss = False
 
     while number_of_guesses != 0:
+        print_Hangman(number_of_guesses)
         print("".join(blank_lines_list))
         user_input = input("Enter a letter: ") # userInput
         user_input = user_input.lower() # if the userInput is a Capital letter.
@@ -69,6 +124,7 @@ def console_game(word):
                         loss = True
                         break
                     else:
+                        print_Hangman(number_of_guesses)
                         print("".join(blank_lines_list))
                         print("Guesses Remaining: {} \n".format(number_of_guesses))
                 else:
@@ -87,6 +143,7 @@ def console_game(word):
 
     #loss message
     if loss:
+        print_Hangman(number_of_guesses)
         print("You lost.")
         print("The word was {}".format(word))
 
