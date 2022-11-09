@@ -1,5 +1,5 @@
 # Console_Hangman_Python
-My take on a python hangman console game. (Work in progress)
+My take on a python hangman console game. Alot of bugs and features missing that I added in the java version of the game. (Work in progress)
 
 
 Version November 1, 2022
