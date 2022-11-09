@@ -1,5 +1,5 @@
 # Hangman_console_game
-My take on a python hangman game.
+My take on a python hangman console game. (Work in progress)
 
 
 Version November 1, 2022
