@@ -99,9 +99,10 @@ def console_game(word):
     guess_bank = [] # guess bank so that user can't input the same letter twice
     win = False  # creating a win/loss message
     loss = False
+    print(word)
 
     while number_of_guesses != 0:
-        print_hangman(number_of_guesses)
+        print_hangman(number_of_guesses) # prints the gallow
         print("".join(blank_lines_list))
         user_input = input("Enter a letter: ") # userInput
         user_input = user_input.lower() # changing userInput to a lowercase letter.
