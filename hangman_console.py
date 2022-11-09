@@ -118,7 +118,7 @@ def console_game(word):
                 print("Guesses Remaining: {} \n".format(number_of_guesses))
             else:
                 if(user_input not in word): # if letter is not in the word
-                    guess_bank = user_input
+                    guess_bank.append(user_input)
                     number_of_guesses = number_of_guesses - 1
                     # checking to see if number_of_guess is 0 for the loss message.
                     if number_of_guesses == 0:
@@ -129,7 +129,7 @@ def console_game(word):
                         print("".join(blank_lines_list))
                         print("Guesses Remaining: {} \n".format(number_of_guesses))
                 else:
-                    guess_bank = user_input
+                    guess_bank.append(user_input)
                     for letter in user_input:
                         for i in range(len(word)):
                             if word[i] == letter:

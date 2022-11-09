@@ -18,3 +18,9 @@ Version November 6, 2022
 - Created an is_float function to check if the user input is a float.
 - Found a bug. If user inputs a symbol like ';' or ']' program will accept the input.
 Probably need to implement an ASCII conditional.
+
+Version November 8, 2022
+
+- Found bug, if user inputs the same letter till the number of runs 0 no loss message will occur
+and the hangman print won't finish.
+- Fount an error with the guess_bank. the user input was not appending to the guess bank.
