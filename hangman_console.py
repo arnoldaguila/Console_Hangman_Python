@@ -4,7 +4,7 @@ def get_word(filename):
     This function gets and returns a random word from a text file that contains a lot of words.
     Version: November 6, 2022
     :param filename: word_bank.txt is a list of words.
-    :return word_file_lines: String, random word from the word_bank.txt file.
+    :return word_file_lines: String.
     '''
     try: # checking to see if you have a file.
         with open(filename, "r") as word_file:
@@ -18,7 +18,7 @@ def is_float(user_input):
     is_float()
     This function checks to see if the user input is a float.
     :param user_input: String, the param is a string that the user inputted
-    :return: True | False: Boolean, returning true if user input is a float and a false otherwise.
+    :return: boolean
     '''
     try:
         float(user_input)
@@ -30,8 +30,8 @@ def print_hangman(number_of_guesses):
     '''
     print_hangman()
     This function returns a print statement, shaped as a gallow and stick figure.
-    :param number_of_guesses: Int, the number of guesses the user has left.
-    :return: print of gallow and stick figure.
+    :param number_of_guesses: Int
+    :return: print()
     '''
     if number_of_guesses == 6:
         print("_________")
@@ -90,7 +90,7 @@ def console_game(word):
     console_game()
     This function is the console game for hangman.
     Version: November 6, 2022
-    :param word: String, a word that was pulled form get_word.
+    :param word: String
     :return:
     '''
     number_of_guesses = 6 # six parts of the body. Head, body, left arm, right arm, left leg, right leg.
@@ -152,6 +152,9 @@ def console_game(word):
         print("You won!!")
 
 
+def main():
+    word = get_word("word_bank.txt")  # getting word
+    print(console_game(word))  # playing console hangman
+
 if __name__ == '__main__': # script run.
-    word = get_word("word_bank.txt") # getting word
-    print(console_game(word)) # playing console hangman
+    main()
