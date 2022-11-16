@@ -2,7 +2,7 @@ from random import randint
 def get_word(filename):
     '''
     This function gets and returns a random word from a text file that contains a lot of words.
-    Version: November 6, 2022
+    Version: November 16, 2022
     :param filename: word_bank.txt is a list of words.
     :return word_file_lines: String.
     '''
@@ -102,21 +102,28 @@ def console_game(word):
     print(word)
 
     while number_of_guesses != 0:
+        print("Guesses Remaining: {}".format(number_of_guesses))
         print_hangman(number_of_guesses) # prints the gallow
         print("".join(blank_lines_list))
         user_input = input("Enter a letter: ") # userInput
         user_input = user_input.lower() # changing userInput to a lowercase letter.
+        user_input = user_input.replace(" ", "") # getting rid of all spaces.
         print()
-        if user_input.isdigit() | is_float(user_input): # checking to see if user_input is an int or float.
-            print("Invalid input, can't have integers or decimals as inputs, please input a letter.")
-        elif len(user_input) > 1: # checking to see if the user_input has put more than 1 letter.
-            print("Invalid input, please input 1 letter.")
+        if (len(user_input) > 1):
+            if user_input == "end":
+                print("Ending game.")
+                return
+            elif user_input == "restart":
+                print("Restarting game.")
+                console_game(word)
+            else:
+                print("Error: Invalid input.")
         else:
-            if (user_input in guess_bank): # if letter has been guessed before.
+            if (ord(user_input) < 97) | (ord(user_input) > 122):
+                print("Error: Invalid Input not a letter.")
+            elif (user_input in guess_bank): # if letter has been guessed before.
                 print("You guess the letter before dude!")
-                number_of_guesses = number_of_guesses - 1
                 print("".join(blank_lines_list))
-                print("Guesses Remaining: {} \n".format(number_of_guesses))
             else:
                 if(user_input not in word): # if letter is not in the word
                     guess_bank.append(user_input)
@@ -125,10 +132,6 @@ def console_game(word):
                     if number_of_guesses == 0:
                         loss = True
                         break
-                    else:
-                        print_hangman(number_of_guesses)
-                        print("".join(blank_lines_list))
-                        print("Guesses Remaining: {} \n".format(number_of_guesses))
                 else:
                     guess_bank.append(user_input)
                     for letter in user_input:
@@ -139,22 +142,40 @@ def console_game(word):
                         win = True
                         print("".join(blank_lines_list))
                         break
-                    else:
-                        print("".join(blank_lines_list))
-                        print("Guesses Remaining: {} \n".format(number_of_guesses))
 
     if loss:  # loss message
         print_hangman(number_of_guesses)
         print("You lost.")
         print("The word was {}".format(word))
+        print()
+        restart()
+
+
+
 
     if win: # win message
         print("You won!!")
 
+def restart():
+    restart = input("Do you want to play again? Enter Yes or No: ")
+    restart = restart.lower()
+    restart = restart.replace(" ", "")
+    if restart == "yes":
+        print("Restarting game.")
+        main()
+    elif restart == "no":
+        print("Ending game.")
+    else:
+        print("Error: Invalid Input. Yes or No.")
+        restart()
 
 def main():
+    '''
+    This is the main function. It calls the game and get_word fucntion.
+    :return:
+    '''
     word = get_word("word_bank.txt")  # getting word
-    print(console_game(word))  # playing console hangman
+    console_game(word) # playing console hangman
 
 if __name__ == '__main__': # script run.
     main()
