@@ -99,7 +99,6 @@ def console_game(word):
     guess_bank = [] # guess bank so that user can't input the same letter twice
     win = False  # creating a win/loss message
     loss = False
-    print(word)
 
     while number_of_guesses != 0:
         print("Guesses Remaining: {}".format(number_of_guesses))
@@ -150,22 +149,28 @@ def console_game(word):
         print()
         restart()
 
-
-
-
     if win: # win message
         print("You won!!")
 
 def restart():
-    restart = input("Do you want to play again? Enter Yes or No: ")
-    restart = restart.lower()
-    restart = restart.replace(" ", "")
-    if restart == "yes":
+    '''
+    This function is used to ask if the user wants to play again.
+    :return:
+    '''
+    user_input = input("Do you want to play again? Enter Yes or No: ")
+    user_input = user_input.lower()
+    user_input = user_input.replace(" ", "")
+    if user_input == "yes":
+        print()
         print("Restarting game.")
         main()
-    elif restart == "no":
+    elif user_input == "no":
+        print()
+        print("Thank you for playing.")
         print("Ending game.")
+        return
     else:
+        print()
         print("Error: Invalid Input. Yes or No.")
         restart()
 
