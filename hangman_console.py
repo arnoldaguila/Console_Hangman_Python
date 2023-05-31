@@ -6,7 +6,7 @@ def get_word(filename):
     This function gets and returns a random word from a text file that contains a lot of words.
     Version: November-16-2022
     :param filename: word_bank.txt is a list of words.
-    :return word_file_lines: String.
+    :return word_file_lines: String
     """
     try:  # checking to see if you have a file.
         with open(filename, "r") as word_file:
