@@ -95,23 +95,54 @@ class Hangman:
         Checks and cleans the argument by removing all spaces and setting the str to upper. This method also checks
         if the argument is valid i.e. the argument is a 1 letter.
 
-        Parameters:
+        Args:
             user_input (str): The user input.
+
+        Returns:
+            None: None is used if user_input is END
+            int: 1 is used if user_input is RESTART
+            int: 2 is used if user_input not a letter or user_input has the length of greater than 1.
         """
         cleaned_input = user_input.replace(" ", "")
         cleaned_input = cleaned_input.upper()
-        if cleaned_input is "END":
-            pass
-        elif cleaned_input is "RESTART":
-            pass
+        is_it_a_char = ord(cleaned_input)
+        if cleaned_input == "END":
+            return None
+        elif cleaned_input == "RESTART":
+            return 1
         elif len(cleaned_input) > 1:
-            pass
+            return 2
+        elif is_it_a_char < 65 or is_it_a_char > 90:
+            return 2
+        elif len(cleaned_input) == 1:
+            return cleaned_input
 
     def run(self):
-
+        """
+        Method that runs the game.
+        """
+        # Display game message.
         self.game_message()
+        # Get a random word from the word bank file.
+        the_word = self.get_word()
+        # Game loop.
         while True:
+            # Get user input.
             user_input = input()
+            # Check user input is valid.
+            cleaned_input = self.check_user_input(user_input)
+            if cleaned_input is None:
+                break
+            elif cleaned_input == 1:
+                restart = True
+                break
+            elif cleaned_input == 2:
+                print("Error, invalid input.")
+                print()
+                continue
+            elif isinstance(cleaned_input, str):
+                if cleaned_input in the_word:
+                    pass
 
 
 def main():
