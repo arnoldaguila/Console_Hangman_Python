@@ -9,21 +9,20 @@ class Hangman:
         self.file = txt_file
 
     @staticmethod
-    def display(the_word, target_index=None):
+    def display(the_word, user_inputted_letter=None, target_index=None):
         """
         Creates underscores for display purposes.
 
         Returns:
             str: A string of underscores.
         """
-        display = ""
-        for i in range(0, len(the_word)):
-            if target_index is not None and target_index == i:
-                display += the_word[i]
-            else:
-                display += "_"
-
-        return display
+        display = "_" * len(the_word)
+        display_list = list(display)
+        if user_inputted_letter is not None and target_index is not None:
+            for i in range(len(the_word)):
+                if (i == target_index) and (target_index is not None):
+                    display_list[i] = user_inputted_letter
+        return "".join(display_list)
 
     def get_word(self):
         """
@@ -117,12 +116,13 @@ class Hangman:
             the_word = self.get_word()
             the_word_but_upper = the_word.upper()
 
+            # Number of guesses remaining for the player.
             guesses_remaining = 6
 
             # Display game message.
             self.game_message()
 
-            # Creating underscores for game display purpose.
+            # Creating underscores for game display purposes. Exp. "_______"
             blank_lines = self.display(the_word)
 
             # Game loop.
